@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CropYield</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" media="screen and (max-width:1020px)" href="static/css/phone.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Clicker+Script&family=Montserrat:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@200;300;400;500;600;700;800;900&family=Ubuntu&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav id="navbar">
+        <div id="logo">
+            <img src="static/img/logoo1.png" alt="">
+        </div>
+
+        <ul>
+            <li class="item"><a href="#home">Home</a></li>
+            <li class="item"><a href="#contoller-container">Controller</a></li>
+            <li class="item"><a href="#model">Model</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <h1 class="h-primary">🌾 Welcome to <span>Smart Crop Yield Prediction</span> 🌱</h1>
+        <p>Utilize advanced Artificial Neural Networks (ANN) to predict crop yield based on real-time environmental data.</p>
+        <p>Make data-driven farming decisions for a more efficient and sustainable future! 🚜📊</p>
+        <a href="#controller-container"><button class="btn">🌟 Start Prediction</button></a>
+    </section>
+    
+
+    <section id="contoller-container">
+        <h1 class="h-primary center">Controller</h1>
+        <div class="container">
+            <form action="/#contoller-container" method="POST">
+                
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="rainfall">Average Rainfall (mm/year)</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="number" id="rainfall" name="rainfall" placeholder="Enter value" step="0.01" min="0" required>
+                        </div>
+                    </div>
+                
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="pesticide">Pesticide Usage (Tons)</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="number" id="pesticide" name="pesticide" placeholder="Enter value" step="0.01" min="0" required>
+                        </div>
+                    </div>
+                
+                    <div class="row">
+                        <div class="col-25">
+                            <label for="temperature">Average Temperature (°C)</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="number" id="temperature" name="temperature" placeholder="Enter value" step="0.01" min="0" required>
+                        </div>
+                    </div>
+                
+                    <div class="row">
+                        <input type="submit" value="Predict Yield">
+                    </div>
+                
+                    {% if prediction %}
+                        <div class="result-box">
+                            <h3>🌾 Predicted Crop Yield: <span class="highlight">{{ prediction }} tons</span></h3>
+                        </div>
+                    {% endif %}
+                </form>
+                
+        </div>
+    </section>
+
+
+    <section id="model">
+        <h1 class="h-primary center">Model</h1>
+        <div class="left">
+            <p> The brain of the system is an Artificial Neural Network that has been designed to predict if or not
+                irrigation is required for a given set of parameters.
+                The architecture of our neural network consists of an input layer with five features, two hidden layers,
+                each with six artificial neurons and an output layer which is a single neuron that gives a probability
+                score of if or not a crop should be irrigated. If the probability score crosses a threshold, the model
+                signals that the crop needs to be irrigated. The architecture diagram of our ANN is as depicted below</p>
+                <div id="image" class="h-primary center">
+                    <img src="static/img/modelimg.jpeg" alt="">
+                </div>
+            
+            <p>In a real world scenario, the data is received by the model in real time by the use of three sensors,
+                namely: Temperature sensor, Soil Moisture sensor and Humidity sensor. This realtime data allows the
+                model to generate frequent output in order to keep the crop's water need in check.
+                The real time data will be collected and transmitted by the gateway, which will be a raspberry pi
+                running a web server. The data can then be obtained at the client side (Web interface) over Wi-Fi. This
+                also means that these data values can be monitored at realtime, thus providing us better, faster and
+                reliable means of maintaing crops!</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="center">
+            Copyright &copy; www.MyCropMonitor.com. All rights reserved!
+        </div>
+    </footer>
+</body>
+
+</html>
